@@ -1,12 +1,4 @@
-package com.example.codecrafthub;
-
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
+package com.codecrafthub;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,6 +8,14 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+import lombok.RequiredArgsConstructor;
+import tools.jackson.core.type.TypeReference;
+import tools.jackson.databind.ObjectMapper;
 
 /**
  * Service layer responsible for course operations and JSON file storage.
@@ -253,6 +253,8 @@ public class CourseService {
      */
     public static class CourseNotFoundException extends RuntimeException {
 
+        private static final long serialVersionUID = -2452385568421914765L;
+
         public CourseNotFoundException(Long id) {
             super("Course with ID " + id + " was not found");
         }
@@ -263,6 +265,8 @@ public class CourseService {
      */
     public static class InvalidCourseException extends RuntimeException {
 
+        private static final long serialVersionUID = 2793014041550458389L;
+
         public InvalidCourseException(String message) {
             super(message);
         }
@@ -272,6 +276,8 @@ public class CourseService {
      * Thrown when courses.json cannot be read or written.
      */
     public static class CourseFileException extends RuntimeException {
+
+        private static final long serialVersionUID = -8210638863327268062L;
 
         public CourseFileException(String message, Throwable cause) {
             super(message, cause);
